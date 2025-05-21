@@ -1,0 +1,49 @@
+version: "3"
+services:
+  app:
+    build: . # 현재 폴더의 Dockerfile을 실행
+    container_name: springboot
+    ports:
+      - 8090:8090
+    networks:
+      - myspring
+    environment:
+        - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle:1521/XEPDB1
+        - SPRING_DATASOURCE_USERNAME=hong
+        - SPRING_DATASOURCE_PASSWORD=abcd1234
+    depends_on:
+      - oracle
+    restart: always
+    
+  oracle:
+    image: gvenzl/oracle-xe:18
+    container_name: oracle
+    ports:
+      - 1522:1521
+    networks:
+      - myspring
+    environment:
+      - ORACLE_PASSWORD=java1234
+      - APP_USER=hong
+      - APP_USER_PASSWORD=abcd1234
+    volumes:
+      - myoracle:/opt/oracle/oradata
+      - ./script:/container-entrypoint-initdb.d
+    restart: always
+
+networks:
+  myspring:
+    
+volumes:
+  myoracle:
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

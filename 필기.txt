@@ -1,0 +1,17 @@
+구현이 완료된 스프링 프로젝트 + 오라클 > AWS 서버에 배포
+컨테이너화 > 스프링 컨테이너 + 오라클 컨테이너 > 도커 컴포즈 작업
+
+1. Dockerfile 생성하기
+- 스프링 프로젝트(o)
+- 오라클(x)
+- toy > "Dockerfile"
+
+2. docker-compose.yml 생성하기
+- toy > 
+
+4. DB 초기화
+- 볼륨에 종속적이다 > 기존 볼륨을 삭제 > 새로운 init.sql 다시 실행
+
+- docker volume rm myvolume
+
+= docker-compose down -v
